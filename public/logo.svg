@@ -16,11 +16,6 @@
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.9"/>
     </filter>
 
-    <filter id="f-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-
     <clipPath id="c-outer">
       <rect x="60" y="40" width="280" height="280" rx="30"/>
     </clipPath>
@@ -49,7 +44,6 @@
       <use href="#puzzle-piece" x="60"  y="180" width="70" height="70" filter="url(#f-shadow)"/>
       <use href="#puzzle-piece" x="130" y="180" width="70" height="70" filter="url(#f-shadow)"/>
       <use href="#puzzle-piece" x="200" y="180" width="70" height="70" filter="url(#f-shadow)"/>
-      
       <use href="#puzzle-piece" x="60"  y="250" width="70" height="70" filter="url(#f-shadow)"/>
       <use href="#puzzle-piece" x="130" y="250" width="70" height="70" filter="url(#f-shadow)"/>
       <use href="#puzzle-piece" x="200" y="250" width="70" height="70" filter="url(#f-shadow)"/>
@@ -57,7 +51,7 @@
     </g>
 
     <path d="M270,180 L295,180 C295,180 295,190 305,190 C315,190 315,180 315,180 L340,180 L340,205 C340,205 330,205 330,215 C330,225 340,225 340,225 L340,250 L315,250 C315,250 315,240 305,240 C295,240 295,250 295,250 L270,250 L270,225 C270,225 280,225 280,215 C280,205 270,205 270,205 Z" 
-          fill="none" stroke="#FFFFFF" stroke-width="1.5" filter="url(#f-glow)" />
+          fill="#FFFFFF" />
   </g>
 
   <rect x="60" y="40" width="280" height="280" rx="30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
