@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════
+   BASE — Apple system aesthetics
+═══════════════════════════════════════════════ */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-font-smoothing:  antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    /* Apple SF Pro text stack */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+
+    /* iOS systemGroupedBackground — the classic off-white */
+    background-color: #F2F2F7;
+    min-height: 100dvh;
+    color: #000;
+  }
+
+  /* Dark mode: pure black like iPhone OLED */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   COMPONENT LIBRARY
+═══════════════════════════════════════════════ */
+@layer components {
+
+  /* ── iOS Card ── */
+  /* White surface on #F2F2F7, ultra-subtle shadow, no border */
+  .ios-card {
+    @apply bg-white dark:bg-[#1C1C1E]
+           rounded-[16px]
+           shadow-ios dark:shadow-none;
+  }
+
+  /* ── iOS Section ── */
+  /* Inset-grouped list section */
+  .ios-section {
+    @apply bg-white dark:bg-[#1C1C1E]
+           rounded-[10px]
+           overflow-hidden;
+  }
+
+  /* ── iOS cell separator ── */
+  .ios-separator {
+    @apply h-px bg-[rgba(60,60,67,0.12)] dark:bg-[rgba(84,84,88,0.65)]
+           ml-4;    /* inset separator */
+  }
+
+  /* ── Apple-blue primary button ── */
+  .btn-primary {
+    @apply relative overflow-hidden
+           bg-[#007AFF] hover:bg-[#0071E3]
+           text-white font-semibold text-[15px]
+           px-4 py-2.5 rounded-xl
+           active:scale-[0.96]
+           transition-all duration-150;
+  }
+
+  /* ── Ghost / cancel button ── */
+  .btn-ghost {
+    @apply px-4 py-2.5 rounded-xl text-[15px] font-medium
+           text-[#007AFF] dark:text-[#0A84FF]
+           active:opacity-60
+           transition-opacity duration-100;
+  }
+
+  /* ── Shared input ── */
+  .input-field {
+    @apply w-full px-3.5 py-3 rounded-xl text-[17px] outline-none
+           bg-[#F2F2F7] dark:bg-[#2C2C2E]
+           text-black dark:text-white
+           placeholder-[rgba(60,60,67,0.3)] dark:placeholder-[rgba(235,235,245,0.3)]
+           transition-all duration-150
+           focus:ring-2 focus:ring-[#007AFF]/30
+           border-0;
+  }
+  .input-field.error {
+    @apply ring-2 ring-[#FF3B30]/40;
+  }
+
+  /* ── Glass panel (sidebar, modals) ── */
+  .glass-panel {
+    @apply bg-white/85 dark:bg-[#1C1C1E]/90
+           backdrop-blur-xl
+           shadow-ios-lg;
+  }
+
+  /* ── Sidebar nav item (macOS) ── */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg
+           text-[13px] font-medium
+           text-[rgba(60,60,67,0.85)] dark:text-[rgba(235,235,245,0.85)]
+           hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-[rgba(255,255,255,0.06)]
+           transition-colors duration-100 cursor-pointer;
+  }
+  .nav-item.active {
+    @apply bg-[#007AFF]/10 dark:bg-[#0A84FF]/15
+           text-[#007AFF] dark:text-[#0A84FF]
+           font-semibold;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR FILL
+   (framer-motion handles the width animation;
+    this class just sets the transition as fallback)
+═══════════════════════════════════════════════ */
+.progress-bar-fill {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════════════════════════════════════════════
+   COLLAPSIBLE — grid row trick
+═══════════════════════════════════════════════ */
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.collapsible.open   { grid-template-rows: 1fr; }
+.collapsible > div  { overflow: hidden; }
+
+/* ═══════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════ */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(0,0,0,0.18); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.28); }
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.28); }
+}
+
+/* ═══════════════════════════════════════════════
+   SAFE AREA SUPPORT (iPhone notch / home bar)
+═══════════════════════════════════════════════ */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pt-safe { padding-top:    env(safe-area-inset-top, 0px); }

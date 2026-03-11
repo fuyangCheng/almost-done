@@ -1,0 +1,213 @@
+<svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">
+<defs>
+
+  <!-- ── Metallic dark gradient (brushed black) ── -->
+  <linearGradient id="metal-tl" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%"   stop-color="#4a4a4a"/>
+    <stop offset="18%"  stop-color="#2e2e2e"/>
+    <stop offset="45%"  stop-color="#181818"/>
+    <stop offset="75%"  stop-color="#101010"/>
+    <stop offset="100%" stop-color="#060606"/>
+  </linearGradient>
+  <linearGradient id="metal-tr" x1="100%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="#3e3e3e"/>
+    <stop offset="20%"  stop-color="#282828"/>
+    <stop offset="55%"  stop-color="#141414"/>
+    <stop offset="100%" stop-color="#060606"/>
+  </linearGradient>
+  <linearGradient id="metal-bl" x1="0%" y1="100%" x2="100%" y2="0%">
+    <stop offset="0%"   stop-color="#3a3a3a"/>
+    <stop offset="30%"  stop-color="#222222"/>
+    <stop offset="65%"  stop-color="#131313"/>
+    <stop offset="100%" stop-color="#060606"/>
+  </linearGradient>
+
+  <!-- ── Top-left highlight (light from upper-left) ── -->
+  <linearGradient id="hi-tl" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%"   stop-color="rgba(255,255,255,0.14)"/>
+    <stop offset="35%"  stop-color="rgba(255,255,255,0.04)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </linearGradient>
+  <linearGradient id="hi-tr" x1="100%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="rgba(255,255,255,0.10)"/>
+    <stop offset="40%"  stop-color="rgba(255,255,255,0.02)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </linearGradient>
+  <linearGradient id="hi-bl" x1="0%" y1="100%" x2="100%" y2="0%">
+    <stop offset="0%"   stop-color="rgba(255,255,255,0.09)"/>
+    <stop offset="40%"  stop-color="rgba(255,255,255,0.02)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </linearGradient>
+
+  <!-- ── Subtle horizontal brushed band (sheen) ── -->
+  <linearGradient id="sheen" x1="0%" y1="45%" x2="0%" y2="55%">
+    <stop offset="0%"   stop-color="rgba(255,255,255,0)"/>
+    <stop offset="50%"  stop-color="rgba(255,255,255,0.06)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </linearGradient>
+
+  <!-- ── Gap glow: soft blue-white light from the missing piece ── -->
+  <radialGradient id="gap-glow" cx="200" cy="175" r="195" gradientUnits="userSpaceOnUse">
+    <stop offset="0%"   stop-color="rgba(220,238,255,0.60)"/>
+    <stop offset="20%"  stop-color="rgba(160,210,255,0.28)"/>
+    <stop offset="48%"  stop-color="rgba(100,175,255,0.10)"/>
+    <stop offset="80%"  stop-color="rgba(60,130,255,0.03)"/>
+    <stop offset="100%" stop-color="rgba(40,100,255,0)"/>
+  </radialGradient>
+
+  <!-- ── Outer background radial (slight lighter center) ── -->
+  <radialGradient id="bg-grad" cx="40%" cy="40%" r="70%">
+    <stop offset="0%"   stop-color="#141414"/>
+    <stop offset="100%" stop-color="#050505"/>
+  </radialGradient>
+
+  <!-- ── Piece drop-shadow ── -->
+  <filter id="f-shadow" x="-8%" y="-5%" width="122%" height="125%">
+    <feDropShadow dx="0" dy="4" stdDeviation="6"
+      flood-color="#000000" flood-opacity="0.85"/>
+  </filter>
+
+  <!-- ── Soft blur for the glow bloom ── -->
+  <filter id="f-bloom" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="20"/>
+  </filter>
+  <filter id="f-glow-edge" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+
+  <!-- ── Clip to outer rounded puzzle block ── -->
+  <clipPath id="c-outer">
+    <rect x="50" y="25" width="300" height="300" rx="26"/>
+  </clipPath>
+
+  <!-- ── Piece clip paths (for isolated effects) ── -->
+  <clipPath id="c-tl">
+    <path d="M50,25 L200,25 L200,77 C200,77 225,77 225,100 C225,123 200,123 200,123 L200,175 L148,175 C148,175 148,200 125,200 C102,200 102,175 102,175 L50,175Z"/>
+  </clipPath>
+  <clipPath id="c-tr">
+    <path d="M200,25 L350,25 L350,175 L298,175 C298,175 298,200 275,200 C252,200 252,175 252,175 L200,175 L200,123 C200,123 175,123 175,100 C175,77 200,77 200,77Z"/>
+  </clipPath>
+  <clipPath id="c-bl">
+    <path d="M50,175 L102,175 C102,175 102,150 125,150 C148,150 148,175 148,175 L200,175 L200,227 C200,227 225,227 225,250 C225,273 200,273 200,273 L200,325 L50,325Z"/>
+  </clipPath>
+</defs>
+
+<!-- ══ OUTER BACKGROUND ══ -->
+<rect x="50" y="25" width="300" height="300" rx="26" fill="url(#bg-grad)"/>
+
+<!-- ══ GAP GLOW BLOOM (behind all pieces) ══ -->
+<!-- Diffuse bloom light emanating outward from the gap -->
+<ellipse cx="268" cy="248" rx="90" ry="90"
+  fill="rgba(110,180,255,0.28)"
+  filter="url(#f-bloom)"
+  clip-path="url(#c-outer)"/>
+
+<!-- ══ TL PIECE ══ -->
+<!-- Path: top-left of puzzle, right-edge tab, bottom-edge tab -->
+<g clip-path="url(#c-outer)">
+  <!-- Extrusion / thickness illusion (offset shadow shape) -->
+  <path transform="translate(1,4)"
+    fill="rgba(0,0,0,0.55)"
+    d="M50,25 L200,25 L200,77 C200,77 225,77 225,100 C225,123 200,123 200,123 L200,175 L148,175 C148,175 148,200 125,200 C102,200 102,175 102,175 L50,175Z"/>
+  <!-- Metal base -->
+  <path fill="url(#metal-tl)" filter="url(#f-shadow)"
+    d="M50,25 L200,25 L200,77 C200,77 225,77 225,100 C225,123 200,123 200,123 L200,175 L148,175 C148,175 148,200 125,200 C102,200 102,175 102,175 L50,175Z"/>
+  <!-- Brushed sheen band -->
+  <path fill="url(#sheen)"
+    d="M50,25 L200,25 L200,77 C200,77 225,77 225,100 C225,123 200,123 200,123 L200,175 L148,175 C148,175 148,200 125,200 C102,200 102,175 102,175 L50,175Z"/>
+  <!-- Directional highlight -->
+  <path fill="url(#hi-tl)"
+    d="M50,25 L200,25 L200,77 C200,77 225,77 225,100 C225,123 200,123 200,123 L200,175 L148,175 C148,175 148,200 125,200 C102,200 102,175 102,175 L50,175Z"/>
+  <!-- Rim light on outer border edges (top + left) -->
+  <path fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"
+    d="M50,175 L50,25 L200,25"/>
+  <!-- Dark shadow rim on inner faces (right + bottom) - depth -->
+  <path fill="none" stroke="rgba(0,0,0,0.6)" stroke-width="1"
+    d="M200,25 L200,175 L50,175"/>
+</g>
+
+<!-- ══ TR PIECE ══ -->
+<!-- top-right: left-edge socket, bottom-edge tab -->
+<g clip-path="url(#c-outer)">
+  <path transform="translate(1,4)"
+    fill="rgba(0,0,0,0.55)"
+    d="M200,25 L350,25 L350,175 L298,175 C298,175 298,200 275,200 C252,200 252,175 252,175 L200,175 L200,123 C200,123 175,123 175,100 C175,77 200,77 200,77Z"/>
+  <path fill="url(#metal-tr)" filter="url(#f-shadow)"
+    d="M200,25 L350,25 L350,175 L298,175 C298,175 298,200 275,200 C252,200 252,175 252,175 L200,175 L200,123 C200,123 175,123 175,100 C175,77 200,77 200,77Z"/>
+  <path fill="url(#sheen)"
+    d="M200,25 L350,25 L350,175 L298,175 C298,175 298,200 275,200 C252,200 252,175 252,175 L200,175 L200,123 C200,123 175,123 175,100 C175,77 200,77 200,77Z"/>
+  <path fill="url(#hi-tr)"
+    d="M200,25 L350,25 L350,175 L298,175 C298,175 298,200 275,200 C252,200 252,175 252,175 L200,175 L200,123 C200,123 175,123 175,100 C175,77 200,77 200,77Z"/>
+  <!-- Rim lights: top edge lit, right edge in shadow -->
+  <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"
+    d="M200,25 L350,25"/>
+  <path fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="1"
+    d="M350,25 L350,175 L200,175"/>
+</g>
+
+<!-- ══ BL PIECE ══ -->
+<!-- bottom-left: top-edge socket, right-edge tab -->
+<g clip-path="url(#c-outer)">
+  <path transform="translate(1,4)"
+    fill="rgba(0,0,0,0.55)"
+    d="M50,175 L102,175 C102,175 102,150 125,150 C148,150 148,175 148,175 L200,175 L200,227 C200,227 225,227 225,250 C225,273 200,273 200,273 L200,325 L50,325Z"/>
+  <path fill="url(#metal-bl)" filter="url(#f-shadow)"
+    d="M50,175 L102,175 C102,175 102,150 125,150 C148,150 148,175 148,175 L200,175 L200,227 C200,227 225,227 225,250 C225,273 200,273 200,273 L200,325 L50,325Z"/>
+  <path fill="url(#sheen)"
+    d="M50,175 L102,175 C102,175 102,150 125,150 C148,150 148,175 148,175 L200,175 L200,227 C200,227 225,227 225,250 C225,273 200,273 200,273 L200,325 L50,325Z"/>
+  <path fill="url(#hi-bl)"
+    d="M50,175 L102,175 C102,175 102,150 125,150 C148,150 148,175 148,175 L200,175 L200,227 C200,227 225,227 225,250 C225,273 200,273 200,273 L200,325 L50,325Z"/>
+  <!-- Rim lights: left edge lit, bottom in shadow -->
+  <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"
+    d="M50,325 L50,175"/>
+  <path fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="1"
+    d="M50,325 L200,325 L200,175"/>
+</g>
+
+<!-- ══ MISSING PIECE AREA ══ -->
+<g clip-path="url(#c-outer)">
+  <!-- Glow fill: the light source -->
+  <path fill="url(#gap-glow)"
+    d="M200,175 L252,175 C252,175 252,150 275,150 C298,150 298,175 298,175 L350,175 L350,325 L200,325 L200,273 C200,273 175,273 175,250 C175,227 200,227 200,227Z"/>
+
+  <!-- Glowing inner edge of TR bottom (facing the gap) -->
+  <path fill="none" stroke="rgba(180,220,255,0.55)" stroke-width="2"
+    d="M298,175 C298,175 298,200 275,200 C252,200 252,175 252,175"
+    filter="url(#f-glow-edge)"/>
+  <path fill="none" stroke="rgba(210,235,255,0.35)" stroke-width="1.5"
+    d="M298,175 C298,175 298,200 275,200 C252,200 252,175 252,175"/>
+
+  <!-- Glowing inner edge of BL right (facing the gap) -->
+  <path fill="none" stroke="rgba(180,220,255,0.55)" stroke-width="2"
+    d="M200,227 C200,227 225,227 225,250 C225,273 200,273 200,273"
+    filter="url(#f-glow-edge)"/>
+  <path fill="none" stroke="rgba(210,235,255,0.35)" stroke-width="1.5"
+    d="M200,227 C200,227 225,227 225,250 C225,273 200,273 200,273"/>
+
+  <!-- Dashed outline of the missing piece -->
+  <path fill="none"
+    stroke="rgba(150,205,255,0.30)" stroke-width="1.2" stroke-dasharray="5.5 4"
+    d="M200,175 L252,175 C252,175 252,150 275,150 C298,150 298,175 298,175 L350,175 L350,325 L200,325 L200,273 C200,273 175,273 175,250 C175,227 200,227 200,227Z"/>
+
+  <!-- Corner hotspot — the brightest point where three pieces meet -->
+  <circle cx="200" cy="175" r="12"
+    fill="rgba(200,230,255,0.22)" filter="url(#f-glow-edge)"/>
+  <circle cx="200" cy="175" r="3.5"
+    fill="rgba(230,245,255,0.75)"/>
+</g>
+
+<!-- ══ OUTER RIM (subtle border to separate from background) ══ -->
+<rect x="50" y="25" width="300" height="300" rx="26"
+  fill="none"
+  stroke="rgba(255,255,255,0.07)"
+  stroke-width="1"/>
+
+<!-- ══ WORDMARK ══ -->
+<text
+  x="200" y="384"
+  text-anchor="middle"
+  font-size="26"
+  font-weight="300"
+  letter-spacing="3.5"
+  fill="#1c1c1c">almost done</text>
+</svg>
